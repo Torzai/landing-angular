@@ -27,7 +27,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": {
+              "build": "ng build --configuration production --output-hashing all"
+            }
           },
           "configurations": {
             "production": {
