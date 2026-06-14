@@ -1,0 +1,16 @@
+<section id="faq">
+  <h2>FAQ</h2>
+  <div class="faq">
+    @for (item of items; track item.q) {
+      <div [class.active]="item.open" class="item" (click)="toggle(item)">
+        <div class="q">
+          <span>{{ item.q }}</span>
+          <span class="icon">+</span>
+        </div>
+        @if (item.open) {
+          <div class="a">{{ item.a }}</div>
+        }
+      </div>
+    }
+  </div>
+</section>

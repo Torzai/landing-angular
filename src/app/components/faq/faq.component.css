@@ -1,0 +1,41 @@
+section {
+  padding: 6rem 0;
+}
+h2 {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--text);
+}
+.faq {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.item {
+  padding: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.q {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--text);
+}
+.icon {
+  color: var(--primary);
+  transition: transform 0.3s;
+}
+.item.active .icon {
+  transform: rotate(45deg);
+}
+.a {
+  margin-top: 1rem;
+  color: var(--text-light);
+  font-size: 14px;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}

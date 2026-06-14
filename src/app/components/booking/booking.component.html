@@ -1,0 +1,98 @@
+<section class="booking-section" id="booking">
+  <div class="container">
+    <h2>Reserva tu sesión</h2>
+    <p class="hint">Cada sesión dura 1h. ¿Necesitas más tiempo? Reserva otra sesión.</p>
+    <form #bookingForm="ngForm" (ngSubmit)="submit(bookingForm)">
+      <input type="email" [(ngModel)]="booking.email" name="email" placeholder="Email" required (blur)="checkRemainingSessions()" />
+
+      @if (remainingSessions()) {
+        <p class="remaining-sessions">
+          Plan {{ remainingSessions()!.plan }}: te quedan
+          <strong>{{ remainingSessions()!.remaining }}</strong> sesiones.
+        </p>
+      }
+
+      <input type="text" [(ngModel)]="booking.name" name="name" placeholder="Nombre" required />
+
+      @if (booking.plan) {
+        <p class="selected-plan">
+          Plan seleccionado: <strong>{{ planLabel(booking.plan) }}</strong>
+          <button type="button" class="clear-plan" (click)="clearPlan()">Quitar</button>
+        </p>
+        <input type="hidden" [(ngModel)]="booking.plan" name="plan" />
+      }
+
+      <label>
+        Fecha de la sesión
+        <div class="date-picker">
+          <input
+            type="text"
+            [(ngModel)]="booking.date"
+            name="date"
+            placeholder="Selecciona fecha"
+            (click)="toggleCalendar()"
+            readonly
+            required
+          />
+          <button type="button" class="calendar-btn" (click)="toggleCalendar()">📅</button>
+        </div>
+        @if (showCalendar) {
+          <div class="calendar-popup">
+            <div class="calendar-header">
+              <button type="button" (click)="prevMonth()">◀</button>
+              <span>{{ currentMonth | date: 'MMMM yyyy' }}</span>
+              <button type="button" (click)="nextMonth()">▶</button>
+            </div>
+            <div class="calendar-grid">
+              @for (day of ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do']; track day) {
+                <div class="day-header">{{ day }}</div>
+              }
+              @for (date of calendarDays; track date.dateStr) {
+                <button
+                  type="button"
+                  [class.other-month]="!date.currentMonth"
+                  [class.selected]="date.dateStr === booking.date"
+                  [class.today]="date.isToday"
+                  [disabled]="date.dateStr < today"
+                  (click)="selectDate(date.dateStr)"
+                >
+                  {{ date.day }}
+                </button>
+              }
+            </div>
+          </div>
+        }
+      </label>
+
+      @if (booking.date) {
+        <label>
+          Horario disponible
+          @if (loadingSlots()) {
+            <p>Cargando horarios...</p>
+          } @else if (availableSlots().length) {
+            <div class="slots-grid">
+              @for (slot of availableSlots(); track slot) {
+                <button type="button" [class.selected]="selectedTime() === slot" (click)="selectTime(slot)">
+                  <span class="slot-time">{{ localSlotTime(slot) }}</span>
+                  @if (showReferenceTime()) {
+                    <span class="slot-reference">{{ referenceSlotTime(slot) }} España</span>
+                  }
+                </button>
+              }
+            </div>
+          } @else {
+            <p>No hay horarios disponibles para este día.</p>
+          }
+        </label>
+      }
+
+      <button type="submit" class="btn btn-primary">Confirmar</button>
+    </form>
+    @if (msg) {
+      <p class="success">{{ msg }}</p>
+    }
+    @if (error) {
+      <p class="error">{{ error }}</p>
+    }
+  </div>
+</section>

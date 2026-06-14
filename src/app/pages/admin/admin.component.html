@@ -1,0 +1,154 @@
+<div class="container">
+  <h1>Admin Dashboard</h1>
+
+  @if (!isAuthenticated()) {
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="login-form">
+      <input type="text" [(ngModel)]="credentials.username" name="username" placeholder="Usuario" required />
+      <input type="password" [(ngModel)]="credentials.password" name="password" placeholder="Contraseña" required />
+      <button type="submit" class="btn btn-primary">Entrar</button>
+      @if (loginError) {
+        <p class="error">{{ loginError }}</p>
+      }
+    </form>
+  }
+
+  @if (isAuthenticated()) {
+    <div class="dashboard">
+      <div class="dashboard-header">
+        <h2>Reservas</h2>
+        <button type="button" class="btn btn-secondary" (click)="logout()">Cerrar sesión</button>
+      </div>
+
+      @if (loadingBookings()) {
+        <p>Cargando reservas...</p>
+      }
+      @if (loadError()) {
+        <p class="error">{{ loadError() }}</p>
+      }
+
+      @if (bookings().length) {
+        <table class="bookings-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Fecha</th>
+              <th>Duración (h)</th>
+              <th>Plan</th>
+              <th>Estado</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (booking of bookings(); track booking._id) {
+              <tr>
+                <td>{{ booking.name }}</td>
+                <td>{{ booking.email }}</td>
+                <td>{{ booking.date | date: 'dd/MM/yyyy HH:mm' }}</td>
+                <td>{{ booking.duration }}</td>
+                <td>{{ booking.plan || '-' }}</td>
+                <td>{{ booking.status }}</td>
+                <td><button type="button" class="btn-cancel" (click)="cancelBooking(booking)">Cancelar</button></td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+
+      @if (!loadingBookings() && !loadError() && !bookings().length) {
+        <p>No hay reservas todavía.</p>
+      }
+
+      <div class="dashboard-header">
+        <h2>Suscripciones</h2>
+      </div>
+
+      <form #subscriptionForm="ngForm" (ngSubmit)="assignSubscription(subscriptionForm)" class="subscription-form">
+        <input type="email" [(ngModel)]="newSubscription.email" name="email" placeholder="Email del cliente" required />
+        <select [(ngModel)]="newSubscription.plan" name="plan" required>
+          @for (plan of subscriptionPlans; track plan) {
+            <option [value]="plan">{{ plan }}</option>
+          }
+        </select>
+        <button type="submit" class="btn btn-primary" [disabled]="savingSubscription()">Asignar plan</button>
+      </form>
+
+      @if (subscriptionError()) {
+        <p class="error">{{ subscriptionError() }}</p>
+      }
+      @if (subscriptionSaved()) {
+        <p class="success">✓ Plan asignado</p>
+      }
+
+      @if (loadingSubscriptions()) {
+        <p>Cargando suscripciones...</p>
+      }
+
+      @if (subscriptions().length) {
+        <table class="bookings-table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Plan</th>
+              <th>Inicio</th>
+              <th>Saldo</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (subscription of subscriptions(); track subscription._id) {
+              <tr>
+                <td>{{ subscription.email }}</td>
+                <td>{{ subscription.plan }}</td>
+                <td>{{ subscription.startDate | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ subscription.credits }} sesiones</td>
+                <td><button type="button" class="btn-cancel" (click)="cancelSubscription(subscription)">Cancelar</button></td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+
+      @if (!loadingSubscriptions() && !subscriptions().length) {
+        <p>No hay suscripciones todavía.</p>
+      }
+
+      <div class="dashboard-header">
+        <h2>Disponibilidad</h2>
+        <button type="button" class="btn btn-primary" (click)="saveAvailability()" [disabled]="savingAvailability()">
+          Guardar disponibilidad
+        </button>
+      </div>
+
+      @if (loadingAvailability()) {
+        <p>Cargando disponibilidad...</p>
+      }
+      @if (availabilityError()) {
+        <p class="error">{{ availabilityError() }}</p>
+      }
+      @if (availabilitySaved()) {
+        <p class="success">✓ Disponibilidad guardada</p>
+      }
+
+      @if (!loadingAvailability()) {
+        <div class="availability-grid">
+          <div class="cell header"></div>
+          @for (day of availabilityDays; track day.value) {
+            <div class="cell header">{{ day.label }}</div>
+          }
+          @for (time of availabilityTimes; track time) {
+            <div class="cell time-label">{{ time }}</div>
+            @for (day of availabilityDays; track day.value) {
+              <button
+                type="button"
+                class="cell slot"
+                [class.active]="isSlotActive(day.value, time)"
+                (click)="toggleSlot(day.value, time)"
+              ></button>
+            }
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

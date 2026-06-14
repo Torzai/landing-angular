@@ -1,0 +1,34 @@
+<section id="pricing">
+  <h2>Planes</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Puntual</h3>
+      <p class="price">15€<span>/h</span></p>
+      <ul>
+        <li>1:1 en vivo</li>
+        <li>Code review</li>
+      </ul>
+      <button class="btn btn-secondary" (click)="selectPlan()">Reservar</button>
+    </div>
+    <div class="card featured">
+      <h3>Popular</h3>
+      <p class="price">149€</p>
+      <ul>
+        <li>12 sesiones</li>
+        <li>Slack support</li>
+        <li>Plan personalizado</li>
+      </ul>
+      <button class="btn btn-primary" (click)="selectPlan('Popular')">Reservar</button>
+    </div>
+    <div class="card">
+      <h3>Intensivo</h3>
+      <p class="price">450€</p>
+      <ul>
+        <li>40 sesiones</li>
+        <li>24/7 support</li>
+        <li>Proyecto real</li>
+      </ul>
+      <button class="btn btn-secondary" (click)="selectPlan('Intensivo')">Reservar</button>
+    </div>
+  </div>
+</section>

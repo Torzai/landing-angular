@@ -1,0 +1,53 @@
+.hero {
+  padding: 6rem 0;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.hero-text h1 {
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+.highlight {
+  color: var(--primary);
+}
+.hero-text p {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+.perks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.perk {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.perk .icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.perk h3 {
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.perk p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
