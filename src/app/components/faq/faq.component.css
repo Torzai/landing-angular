@@ -39,3 +39,17 @@ h2 {
   padding-top: 1rem;
   border-top: 1px solid var(--border);
 }
+
+@media (max-width: 768px) {
+  section { padding: 3rem 0; }
+  h2 { font-size: 28px; margin-bottom: 2rem; }
+  .item { padding: 1.25rem; }
+  .q { gap: 1rem; align-items: flex-start; font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  h2 { font-size: 24px; }
+  .item { padding: 1rem; }
+  .q { font-size: 0.9rem; }
+  .a { font-size: 13px; }
+}

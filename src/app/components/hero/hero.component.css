@@ -58,6 +58,26 @@
 @media (max-width: 768px) {
   .hero {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
+    padding: 3rem 0;
+  }
+  .hero-text h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 2rem 0;
+  }
+  .hero-text h1 {
+    font-size: 28px;
+  }
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.85rem;
+  }
+  .perk {
+    padding: 1rem;
   }
 }

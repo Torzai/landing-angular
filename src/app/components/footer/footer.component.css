@@ -10,3 +10,13 @@ footer {
   margin: 0 auto;
   padding: 0 2rem;
 }
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+  footer {
+    padding: 2rem 0;
+    font-size: 12px;
+  }
+}

@@ -27,6 +27,7 @@
       }
 
       @if (bookings().length) {
+        <div class="table-wrapper">
         <table class="bookings-table">
           <thead>
             <tr>
@@ -53,6 +54,7 @@
             }
           </tbody>
         </table>
+        </div>
       }
 
       @if (!loadingBookings() && !loadError() && !bookings().length) {
@@ -85,6 +87,7 @@
       }
 
       @if (subscriptions().length) {
+        <div class="table-wrapper">
         <table class="bookings-table">
           <thead>
             <tr>
@@ -107,6 +110,7 @@
             }
           </tbody>
         </table>
+        </div>
       }
 
       @if (!loadingSubscriptions() && !subscriptions().length) {
@@ -131,6 +135,7 @@
       }
 
       @if (!loadingAvailability()) {
+        <div class="table-wrapper">
         <div class="availability-grid">
           <div class="cell header"></div>
           @for (day of availabilityDays; track day.value) {
@@ -147,6 +152,7 @@
               ></button>
             }
           }
+        </div>
         </div>
       }
     </div>

@@ -46,3 +46,16 @@ h2 {
   font-size: 13px;
   color: var(--primary);
 }
+
+@media (max-width: 768px) {
+  section { padding: 3rem 0; }
+  h2 { font-size: 28px; margin-bottom: 2rem; }
+  .grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .card { padding: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  h2 { font-size: 24px; }
+  .card { padding: 1.25rem; }
+  .avatar { width: 40px; height: 40px; font-size: 0.85rem; }
+}

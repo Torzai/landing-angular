@@ -69,3 +69,14 @@ body {
     width: 100%;
   }
 }
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .btn {
+    padding: 0.85rem 1.5rem;
+    font-size: 14px;
+  }
+}

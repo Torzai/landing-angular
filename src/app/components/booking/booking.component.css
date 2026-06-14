@@ -32,3 +32,23 @@ label { font-size: 0.95rem; color: var(--text-muted); }
 .slots-grid button.selected { background: var(--primary); color: #000; font-weight: bold; }
 .slot-reference { font-size: 0.7rem; color: var(--text-light); }
 .slots-grid button.selected .slot-reference { color: inherit; opacity: 0.7; }
+
+@media (max-width: 768px) {
+  .booking-section { padding: 2.5rem 0; margin: 3rem 0; }
+  form { max-width: 100%; }
+  .calendar-popup { min-width: 0; width: 100%; padding: 0.75rem; }
+  .calendar-grid { gap: 0.35rem; }
+  .calendar-grid button { padding: 0.4rem; font-size: 0.85rem; }
+  .slots-grid { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); }
+  .selected-plan { flex-wrap: wrap; }
+  .clear-plan { margin-left: 0; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 1.25rem; }
+  .booking-section { padding: 2rem 0; margin: 2rem 0; }
+  .calendar-grid { gap: 0.25rem; }
+  .calendar-grid button { padding: 0.3rem; font-size: 0.8rem; }
+  .slots-grid { grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); gap: 0.4rem; }
+  .slots-grid button { padding: 0.4rem 0.3rem; font-size: 0.8rem; }
+}

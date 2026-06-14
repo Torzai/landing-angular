@@ -2,10 +2,22 @@
   <div class="container">
     <nav>
       <div class="logo">Angular <span>Mentorship</span></div>
-      <ul>
+      <button
+        type="button"
+        class="menu-toggle"
+        [class.open]="menuOpen()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Abrir menú"
+        (click)="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul [class.open]="menuOpen()">
         <li><a routerLink="/" (click)="scrollToTop()">Home</a></li>
-        <li><a href="#booking">Agendar</a></li>
-        <li><a routerLink="/admin">Admin</a></li>
+        <li><a href="#booking" (click)="closeMenu()">Agendar</a></li>
+        <li><a routerLink="/admin" (click)="closeMenu()">Admin</a></li>
       </ul>
     </nav>
   </div>

@@ -50,8 +50,15 @@
   border-radius: 6px;
 }
 
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .bookings-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   margin-top: 1rem;
 }
@@ -91,6 +98,7 @@
   grid-template-columns: 60px repeat(7, 1fr);
   gap: 4px;
   margin-top: 1rem;
+  min-width: 480px;
 }
 
 .availability-grid .cell {
@@ -125,4 +133,49 @@
 
 .availability-grid button.slot.active {
   background: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  h1 {
+    font-size: 26px;
+  }
+  .dashboard-header h2 {
+    font-size: 20px;
+  }
+  .dashboard-header .btn {
+    width: auto;
+  }
+  .subscription-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .subscription-form input,
+  .subscription-form select,
+  .subscription-form .btn {
+    width: 100%;
+  }
+  .bookings-table th,
+  .bookings-table td {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.25rem;
+  }
+  h1 {
+    font-size: 22px;
+  }
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .dashboard-header .btn {
+    width: 100%;
+  }
 }
