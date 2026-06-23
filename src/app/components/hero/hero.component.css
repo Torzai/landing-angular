@@ -1,5 +1,5 @@
 .hero {
-  padding: 6rem 0;
+  padding: 4rem 0 4.5rem;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 4rem;
@@ -9,7 +9,7 @@
   display: inline-block;
   padding: 0.4rem 1rem;
   margin-bottom: 1rem;
-  border: 1px solid var(--primary);
+  background: rgba(220, 38, 38, 0.1);
   border-radius: 999px;
   color: var(--primary);
   font-size: 0.8rem;
@@ -41,6 +41,7 @@
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
+  box-shadow: var(--card-shadow);
 }
 .perk .icon {
   font-size: 1.5rem;
@@ -58,8 +59,8 @@
 @media (max-width: 768px) {
   .hero {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding: 3rem 0;
+    gap: 2rem;
+    padding: 2.5rem 0 3rem;
   }
   .hero-text h1 {
     font-size: 36px;

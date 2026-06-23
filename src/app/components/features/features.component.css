@@ -17,9 +17,16 @@ h2 {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+.card-icon {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  display: block;
 }
 .card h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--text);
 }
 .card p {

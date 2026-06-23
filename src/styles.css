@@ -1,10 +1,13 @@
 :root {
   --primary: #FF0033;
-  --dark-bg: #0d0d0d;
-  --card-bg: #1a1a1a;
-  --border: #2a2a2a;
+  --dark-bg: #0d0d10;
+  --card-bg: #1a1a1f;
+  --border: #2a2a30;
   --text: #e8e8e8;
   --text-light: #a8a8a8;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --dark-bg-95: rgba(13, 13, 16, 0.95);
+  --dark-bg-98: rgba(13, 13, 16, 0.98);
 }
 
 * {

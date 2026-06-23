@@ -3,7 +3,7 @@
   <div class="grid">
     <div class="card">
       <h3>Puntual</h3>
-      <p class="price">15€<span>/h</span></p>
+      <p class="price">45€<span>/sesión</span></p>
       <ul>
         <li>1:1 en vivo</li>
         <li>Code review</li>
@@ -11,24 +11,30 @@
       <button class="btn btn-secondary" (click)="selectPlan()">Reservar</button>
     </div>
     <div class="card featured">
-      <h3>Popular</h3>
-      <p class="price">149€</p>
+      <h3>Pack 5 sesiones</h3>
+      <p class="price">200€<span> · 40€/ses.</span></p>
+      <p class="saving">11% de descuento</p>
       <ul>
-        <li>12 sesiones</li>
-        <li>Slack support</li>
+        <li>1:1 en vivo</li>
+        <li>Code review</li>
         <li>Plan personalizado</li>
+        <li>Soporte async por Slack entre semana</li>
       </ul>
-      <button class="btn btn-primary" (click)="selectPlan('Popular')">Reservar</button>
+      <button class="btn btn-primary" (click)="selectPlan('Pack 5')">Reservar</button>
     </div>
     <div class="card">
-      <h3>Intensivo</h3>
-      <p class="price">450€</p>
+      <h3>Pack 10 sesiones</h3>
+      <p class="price">350€<span> · 35€/ses.</span></p>
+      <p class="saving">22% de descuento</p>
       <ul>
-        <li>40 sesiones</li>
-        <li>24/7 support</li>
-        <li>Proyecto real</li>
+        <li>1:1 en vivo</li>
+        <li>Code review</li>
+        <li>Plan personalizado</li>
+        <li>Soporte async por Slack entre semana</li>
+        <li>Revisión de un proyecto real</li>
+        <li>Seguimiento entre sesiones</li>
       </ul>
-      <button class="btn btn-secondary" (click)="selectPlan('Intensivo')">Reservar</button>
+      <button class="btn btn-secondary" (click)="selectPlan('Pack 10')">Reservar</button>
     </div>
   </div>
 </section>
